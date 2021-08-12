@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const User = require('./models/User')
 
 const hello = async (req, res) => {
     // res.status('200').json({ message: 'back to export default' });
