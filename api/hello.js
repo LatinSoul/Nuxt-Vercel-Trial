@@ -1,7 +1,9 @@
 const User = require('./models/User')
+const dbConn = require('./mongodb')
 
 const hello = async (req, res) => {
     // res.status('200').json({ message: 'back to export default' });
+    await dbConn()
     const email = 'oc@gmail.com'
     try {
         const user = await User.findOne({ email })
