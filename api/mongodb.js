@@ -12,4 +12,4 @@ const dbConn = mongoose.connect(dbURI, dbOptions)
     .then((result) => { console.log('Successfully connected to DJIO database') }) // eslint-disable-line no-console
     .catch((err) => console.log('db conn err:', err)) // eslint-disable-line no-console
 
-export default dbConn;
+export default dbConn
