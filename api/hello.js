@@ -1,5 +1,7 @@
-const User = require('./models/User')
-const dbConnect = require('./dbConnect')
+// const User = require('./models/User')
+// const dbConnect = require('./dbConnect')
+import User from './models/User'
+import dbConnect from './dbConnect'
 
 const hello = async (req, res) => {
     // res.status('200').json({ message: 'back to export default' });
