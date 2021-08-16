@@ -1,9 +1,9 @@
 const User = require('./models/User')
-const dbConn = require('./dbConnect')
+const dbConnect = require('./dbConnect')
 
 const hello = async (req, res) => {
     // res.status('200').json({ message: 'back to export default' });
-    await dbConn()
+    await dbConnect()
     const email = 'oc@gmail.com'
     try {
         const user = await User.findOne({ email })
