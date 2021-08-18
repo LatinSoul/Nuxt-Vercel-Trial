@@ -33,7 +33,7 @@ import nodemailer from 'nodemailer'
 // // sending
 
 // Nodemailer function definitiion
-function mailing({ email, msg }) {
+const mailing = ({ email, msg }) => {
     const transporter = nodemailer.createTransport({
         host: process.env.MAIL_HOST,
         port: '587',
@@ -67,7 +67,7 @@ function mailing({ email, msg }) {
 }
 
 // Serverless function usage
-export default function mailer(req, res) {
+const mailer = (req, res) => {
     const { email, msg } = req.body
     try {
         const mail = mailing(email, msg)
@@ -77,3 +77,5 @@ export default function mailer(req, res) {
         res.status(400).json({ err })
     }
 }
+
+export default mailer
