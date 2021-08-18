@@ -52,7 +52,7 @@ async function mailing({ email, msg }) {
     // })    
     await transporter.sendMail({
         from: process.env.MAIL_USER,
-        to: `<${email}>`,
+        to: email,
         subject: 'Testing Mailer function',
         text: msg
     },
