@@ -3,7 +3,7 @@ import dbConnect from './dbConnect'
 
 const hello = async (req, res) => {
     await dbConnect()
-    const bodyEmail = req.body.email
+    const body = req.body
     const email = 'oc@gmail.com'
     try {
         const user = await User.findOne({ email })
@@ -12,7 +12,7 @@ const hello = async (req, res) => {
         // res.cookie('user', user, { httpOnly: true })
         res.status(200)
         res.setHeader('Content-Type', 'application/json')
-        res.end(JSON.stringify(user, bodyEmail))
+        res.end(JSON.stringify(body))
         // json({ user: user._id, msg: bodyEmail })
     } catch (err) {
         // const errors = errorHandler(err)
