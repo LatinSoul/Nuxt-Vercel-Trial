@@ -72,7 +72,7 @@ function mail(email, msg) {
 export default async (req, res) => {
     const { email, msg } = req.body
     try {
-        await mail(req.body)
+        await mail(email, msg)
         res.status(200).json({ message: 'OH YEAH', email, msg })
     } catch (err) {
         const errors = errorHandler(err)
