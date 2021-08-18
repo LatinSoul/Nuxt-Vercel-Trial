@@ -1,10 +1,7 @@
-// const User = require('./models/User')
-// const dbConnect = require('./dbConnect')
 import User from './models/User'
-import dbConnect from './project'
+import dbConnect from './dbConnect'
 
-const hello = async (req, res) => {
-    // res.status('200').json({ message: 'back to export default' });
+const auth = async (req, res) => {
     await dbConnect()
     const email = 'oc@gmail.com'
     try {
@@ -19,4 +16,4 @@ const hello = async (req, res) => {
     }
 }
 
-export default hello
+export default auth
