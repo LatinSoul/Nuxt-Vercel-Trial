@@ -33,9 +33,9 @@ import nodemailer from 'nodemailer'
 // // sending
 
 // Nodemailer function definitiion
-async function mailing({ email, msg }) {
+function mailing({ email, msg }) {
     const transporter = nodemailer.createTransport({
-        host: 'mail.gandi.net',
+        host: process.env.MAIL_HOST,
         port: '587',
         secure: false,
         auth: {
@@ -50,8 +50,8 @@ async function mailing({ email, msg }) {
     //       console.log('Server is ready to take our messages');
     //   }
     // })    
-    await transporter.sendMail({
-        from: 'msg@digitaljam.io',
+    transporter.sendMail({
+        from: process.env.MAIL_USER,
         to: email,
         subject: 'Testing Mailer function',
         text: msg
