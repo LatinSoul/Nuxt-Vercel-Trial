@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-prototype-builtins */
 import nodemailer from 'nodemailer'
-import errorHandler from './utils/errorHandler'
+// import errorHandler from './utils/errorHandler'
 // import validator from 'validator'
 // import xssFilters from 'xss-filters'
 
@@ -73,7 +73,7 @@ export default async function mailer(req, res) {
         const mail = await mailing(user, email, msg)
         res.status(200).json({ 'message': 'OH YEAH', msg: mail.messageId })
     } catch (err) {
-        const errors = errorHandler(err)
-        res.status(400).json({ errors })
+        // const errors = errorHandler(err)
+        res.status(400).json({ err })
     }
 }
