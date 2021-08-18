@@ -38,7 +38,7 @@ import errorHandler from './utils/errorHandler'
 export default (req, res) => {
     const { email, msg } = req.body
 
-    function mailing(email, msg) {
+    async function mailing(email, msg) {
         const transporter = nodemailer.createTransport({
             host: process.env.MAIL_HOST,
             port: '587',
@@ -55,7 +55,7 @@ export default (req, res) => {
         //       console.log('Server is ready to take our messages');
         //   }
         // })    
-        transporter.sendMail({
+        await transporter.sendMail({
             from: process.env.MAIL_USER,
             to: 'oliver.carvajal@SpeechGrammarList.com',
             subject: 'Testing Mailer function',
