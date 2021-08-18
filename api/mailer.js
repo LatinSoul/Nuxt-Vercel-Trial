@@ -33,42 +33,44 @@ import errorHandler from './utils/errorHandler'
 // // sending
 
 // Nodemailer function definitiion
-const mailing = async ({ email, msg }) => {
-    const transporter = nodemailer.createTransport({
-        host: process.env.MAIL_HOST,
-        port: '587',
-        secure: false,
-        auth: {
-            user: process.env.MAIL_USER,
-            pass: process.env.MAIL_PWD
-        }
-    })
-    // transporter.verify(function(error, success) {
-    //   if (error) {
-    //       console.log(error);
-    //   } else {
-    //       console.log('Server is ready to take our messages');
-    //   }
-    // })    
-    await transporter.sendMail({
-        from: process.env.MAIL_USER,
-        to: email,
-        subject: 'Testing Mailer function',
-        text: msg
-    },
-        // (error, info) => {
-        //     if (error) {
-        //         console.log("Sending Error:", error);
-        //     }
-        //     // console.log("Success:", info.messageId);
-        //     return info.messageId
-        // }
-    )
-}
 
 // Serverless function usage
-const mailer = async (req, res) => {
+export default async (req, res) => {
     const { email, msg } = req.body
+
+    async function mailing({ email, msg }) {
+        const transporter = nodemailer.createTransport({
+            host: process.env.MAIL_HOST,
+            port: '587',
+            secure: false,
+            auth: {
+                user: process.env.MAIL_USER,
+                pass: process.env.MAIL_PWD
+            }
+        })
+        // transporter.verify(function(error, success) {
+        //   if (error) {
+        //       console.log(error);
+        //   } else {
+        //       console.log('Server is ready to take our messages');
+        //   }
+        // })    
+        await transporter.sendMail({
+            from: process.env.MAIL_USER,
+            to: email,
+            subject: 'Testing Mailer function',
+            text: msg
+        },
+            // (error, info) => {
+            //     if (error) {
+            //         console.log("Sending Error:", error);
+            //     }
+            //     // console.log("Success:", info.messageId);
+            //     return info.messageId
+            // }
+        )
+    }
+
     try {
         const mail = await mailing(email, msg)
         res.status(200).json({ 'message': 'OH YEAH', msg: mail.messageId })
@@ -77,5 +79,3 @@ const mailer = async (req, res) => {
         res.status(400).json({ errors })
     }
 }
-
-export default mailer
