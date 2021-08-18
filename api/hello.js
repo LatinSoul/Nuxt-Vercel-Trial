@@ -10,8 +10,8 @@ const hello = async (req, res) => {
         // console.log('uid:', user._id)
         // const token = createToken(user._id)
         // res.cookie('user', user, { httpOnly: true })
-        // res.setHeader('Content-Type', 'application/json')
         res.status(200)
+        res.setHeader('Content-Type', 'application/json')
         res.end(JSON.stringify(user, bodyEmail))
         // json({ user: user._id, msg: bodyEmail })
     } catch (err) {
