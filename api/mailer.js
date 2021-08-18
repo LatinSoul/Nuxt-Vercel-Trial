@@ -61,7 +61,8 @@ const mailer = (req, res) => {
                 }
             )
         }
-        sendMail('...sanitizedAttributes')
+        const email = 'oliver.carvajal@gmail.com'
+        sendMail(email, '...sanitizedAttributes')
         res.status(200).json({ 'message': 'OH YEAH' })
     } catch (err) {
         // const errors = errorHandler(err)
