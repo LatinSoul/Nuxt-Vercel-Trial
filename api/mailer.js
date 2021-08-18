@@ -33,7 +33,7 @@ import errorHandler from './utils/errorHandler'
 // // sending
 
 // Nodemailer function definitiion
-function mailing({ email, msg }) {
+async function mailing({ email, msg }) {
     const transporter = nodemailer.createTransport({
         host: process.env.MAIL_HOST,
         port: '587',
@@ -50,27 +50,34 @@ function mailing({ email, msg }) {
     //       console.log('Server is ready to take our messages');
     //   }
     // })    
-    transporter.sendMail({
+    // transporter.sendMail({
+    //     from: process.env.MAIL_USER,
+    //     to: email,
+    //     subject: 'testing mailer function',
+    //     text: msg
+    // },
+    //     (error) => {
+    //         if (error) {
+    //             console.log("Sending Error:", error);
+    //         }
+    //         console.log("Success!");
+    //     }
+    // )
+    await transporter.sendMail({
         from: process.env.MAIL_USER,
         to: email,
         subject: 'testing mailer function',
         text: msg
-    },
-        (error) => {
-            if (error) {
-                console.log("Sending Error:", error);
-            }
-            console.log("Success!");
-        }
-    )
+    })
+
 }
 
 // Serverless function usage
 const mailer = (req, res) => {
     const { email, msg } = req.body
     try {
-        mailing(email, msg)
-        res.status(200).json({ 'message': 'OH YEAH', email, msg })
+        const mail = mailing(email, msg)
+        res.status(200).json({ 'message': 'OH YEAH', msg: mail.messageId })
     } catch (err) {
         const errors = errorHandler(err)
         res.status(400).json({ errors })
