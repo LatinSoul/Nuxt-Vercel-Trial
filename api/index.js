@@ -1,6 +1,6 @@
 // // Import the dependency.
 import dbConnect from './dbConnect'
-// // Handler
+// Handler
 module.exports.myConn = async (req, res) => {
     // Get the MongoClient by calling await on the promise.
     // Because it is a promise, it will only resolve once.
