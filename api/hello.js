@@ -4,7 +4,7 @@ import dbConnect from './dbConnect'
 export default async (req, res) => {
     await dbConnect()
     // const query = req.query
-    const { email } = req.body
+    const email = req.body.email
     // const email = 'oc@gmail.com'
     try {
         const user = await User.findOne({ email })
