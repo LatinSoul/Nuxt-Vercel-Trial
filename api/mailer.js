@@ -5,7 +5,7 @@ import errorHandler from './utils/errorHandler'
 // import validator from 'validator'
 // import xssFilters from 'xss-filters'
 
-const mailer = (req, res) => {
+module.exports = async (req, res) => {
     const { email, msg } = req.body
     try {
         // // Our three form fields, all required
@@ -62,7 +62,7 @@ const mailer = (req, res) => {
                 }
             )
         }
-        sendMail(email, msg)
+        await sendMail(email, msg)
         res.status(200).json({ 'message': 'OH YEAH', email, msg })
     } catch (err) {
         const errors = errorHandler(err)
@@ -70,4 +70,4 @@ const mailer = (req, res) => {
     }
 }
 
-export default mailer
+// export default mailer
