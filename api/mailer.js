@@ -51,7 +51,7 @@ async function mailing({ email, msg }) {
     //   }
     // })    
     await transporter.sendMail({
-        from: process.env.MAIL_USER,
+        from: 'msg@digitaljam.io',
         to: email,
         subject: 'Testing Mailer function',
         text: msg
