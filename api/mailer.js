@@ -57,7 +57,7 @@ function mail(email, msg) {
     //       console.log('Server is ready to take our messages');
     //   }
     // })    
-    transporter.sendMail({ options },
+    return transporter.sendMail({ options },
         // (error, info) => {
         //     if (error) {
         //         console.log("Sending Error:", error);
