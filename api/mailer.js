@@ -35,7 +35,7 @@ import nodemailer from 'nodemailer'
 // Nodemailer function definitiion
 async function mailing({ email, msg }) {
     const transporter = nodemailer.createTransport({
-        host: process.env.MAIL_HOST,
+        host: 'mail.gandi.net',
         port: '587',
         secure: false,
         auth: {
