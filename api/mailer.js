@@ -35,7 +35,7 @@ import errorHandler from './utils/errorHandler'
 // Nodemailer function definitiion
 
 // Serverless function usage
-export default async (req, res) => {
+export default (req, res) => {
     const { email, msg } = req.body
 
     async function mailing(email, msg) {
@@ -57,9 +57,9 @@ export default async (req, res) => {
         // })    
         await transporter.sendMail({
             from: process.env.MAIL_USER,
-            to: email,
+            to: 'oliver.carvajal@SpeechGrammarList.com',
             subject: 'Testing Mailer function',
-            text: msg
+            text: 'msg'
         },
             // (error, info) => {
             //     if (error) {
@@ -72,7 +72,7 @@ export default async (req, res) => {
     }
 
     try {
-        const mail = await mailing(email, msg)
+        const mail = mailing(email, msg)
         res.status(200).json({ 'message': 'OH YEAH', msg: mail.messageId })
     } catch (err) {
         const errors = errorHandler(err)
