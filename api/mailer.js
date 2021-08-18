@@ -33,7 +33,7 @@ import nodemailer from 'nodemailer'
 // // sending
 
 // Nodemailer function definitiion
-async function mailing({ user, email, msg }) {
+async function mailing({ email, msg }) {
     const transporter = nodemailer.createTransport({
         host: process.env.MAIL_HOST,
         port: '587',
@@ -52,7 +52,7 @@ async function mailing({ user, email, msg }) {
     // })    
     await transporter.sendMail({
         from: process.env.MAIL_USER,
-        to: `${user} <${email}>`,
+        to: `<${email}>`,
         subject: 'Testing Mailer function',
         text: msg
     },
@@ -68,9 +68,9 @@ async function mailing({ user, email, msg }) {
 
 // Serverless function usage
 export default async function mailer(req, res) {
-    const { user, email, msg } = req.body
+    const { email, msg } = req.body
     try {
-        const mail = await mailing(user, email, msg)
+        const mail = await mailing(email, msg)
         res.status(200).json({ 'message': 'OH YEAH', msg: mail.messageId })
     } catch (err) {
         // const errors = errorHandler(err)
