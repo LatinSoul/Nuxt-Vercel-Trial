@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-prototype-builtins */
-// require('dotenv').config()
 import nodemailer from 'nodemailer'
+import errorHandler from './utils/errorHandler'
 // import validator from 'validator'
 // import xssFilters from 'xss-filters'
 
@@ -65,8 +65,8 @@ const mailer = (req, res) => {
         sendMail(email, msg)
         res.status(200).json({ 'message': 'OH YEAH', email, msg })
     } catch (err) {
-        // const errors = errorHandler(err)
-        res.status(400).json({ err })
+        const errors = errorHandler(err)
+        res.status(400).json({ errors })
     }
 }
 
