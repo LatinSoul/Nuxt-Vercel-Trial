@@ -67,10 +67,10 @@ function mailing({ email, msg }) {
 }
 
 // Serverless function usage
-export default async function mailer(req, res) {
+export default function mailer(req, res) {
     const { email, msg } = req.body
     try {
-        const mail = await mailing(email, msg)
+        const mail = mailing(email, msg)
         res.status(200).json({ 'message': 'OH YEAH', msg: mail.messageId })
     } catch (err) {
         // const errors = errorHandler(err)
