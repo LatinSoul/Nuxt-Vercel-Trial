@@ -57,9 +57,9 @@ export default (req, res) => {
         // })    
         await transporter.sendMail({
             from: process.env.MAIL_USER,
-            to: 'oliver.carvajal@SpeechGrammarList.com',
+            to: email,
             subject: 'Testing Mailer function',
-            text: 'msg'
+            text: msg
         },
             // (error, info) => {
             //     if (error) {
