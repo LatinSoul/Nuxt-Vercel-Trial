@@ -1,22 +1,22 @@
-// const User = require('./models/User')
-// const dbConnect = require('./dbConnect')
+import dbConnect from './dbConnect'
 import User from './models/User'
-import dbConnect from './project'
+import errorHandler from './utils/errorHandler'
 
-const hello = async (req, res) => {
-    // res.status('200').json({ message: 'back to export default' });
+export default async (req, res) => {
     await dbConnect()
-    const email = 'oc@gmail.com'
+    // const query = req.query
+    const { email, username } = req.body
     try {
         const user = await User.findOne({ email })
         // console.log('uid:', user._id)
         // const token = createToken(user._id)
         // res.cookie('user', user, { httpOnly: true })
-        res.status(200).json({ user: user._id })
+        res.setHeader('Content-Type', 'application/json')
+        res.status(200).json({ user: user._id, email, username })
     } catch (err) {
-        // const errors = errorHandler(err)
-        res.status(400).json({ err })
+        const errors = errorHandler(err)
+        res.status(400).json({ errors })
     }
 }
 
-export default hello
+// export default hello
