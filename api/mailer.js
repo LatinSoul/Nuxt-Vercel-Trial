@@ -55,7 +55,7 @@ export default (req, res) => {
         //       console.log('Server is ready to take our messages');
         //   }
         // })    
-        const mail = transporter.sendMail({
+        transporter.sendMail({
             from: process.env.MAIL_USER,
             to: 'oliver.carvajal@SpeechGrammarList.com',
             subject: 'Testing Mailer function',
@@ -69,12 +69,11 @@ export default (req, res) => {
             //     return info.messageId
             // }
         )
-        return mail.messageId
     }
 
     try {
         const mail = mailing(email, msg)
-        res.status(200).json({ message: 'OH YEAH', msg: mailing.mail.messageId })
+        res.status(200).json({ message: 'OH YEAH', msg: mail.messageId })
     } catch (err) {
         const errors = errorHandler(err)
         res.status(400).json({ errors })
