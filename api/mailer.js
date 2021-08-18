@@ -72,8 +72,8 @@ export default (req, res) => {
     }
 
     try {
-        const mail = mailing(email, msg)
-        res.status(200).json({ message: 'OH YEAH', msg: mail.messageId })
+        mailing(email, msg)
+        res.status(200).json({ message: 'OH YEAH', email, msg })
     } catch (err) {
         const errors = errorHandler(err)
         res.status(400).json({ errors })
