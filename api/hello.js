@@ -19,7 +19,4 @@ const hello = async (req, res) => {
     }
 }
 
-
-
-
 export default hello
