@@ -42,7 +42,7 @@ const transporter = nodemailer.createTransport({
         pass: process.env.MAIL_PWD
     }
 })
-async function mail(email, msg) {
+function mail(email, msg) {
     const options = {
         from: process.env.MAIL_USER,
         to: email,
@@ -57,7 +57,7 @@ async function mail(email, msg) {
     //       console.log('Server is ready to take our messages');
     //   }
     // })    
-    await transporter.sendMail({ options },
+    transporter.sendMail({ options },
         // (error, info) => {
         //     if (error) {
         //         console.log("Sending Error:", error);
