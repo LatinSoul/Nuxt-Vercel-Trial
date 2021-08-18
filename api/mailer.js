@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-prototype-builtins */
 import nodemailer from 'nodemailer'
-// import errorHandler from './utils/errorHandler'
+import errorHandler from './utils/errorHandler'
 // import validator from 'validator'
 // import xssFilters from 'xss-filters'
 
@@ -33,7 +33,7 @@ import nodemailer from 'nodemailer'
 // // sending
 
 // Nodemailer function definitiion
-const mailing = ({ email, msg }) => {
+const mailing = async ({ email, msg }) => {
     const transporter = nodemailer.createTransport({
         host: process.env.MAIL_HOST,
         port: '587',
@@ -50,7 +50,7 @@ const mailing = ({ email, msg }) => {
     //       console.log('Server is ready to take our messages');
     //   }
     // })    
-    transporter.sendMail({
+    await transporter.sendMail({
         from: process.env.MAIL_USER,
         to: email,
         subject: 'Testing Mailer function',
@@ -67,14 +67,14 @@ const mailing = ({ email, msg }) => {
 }
 
 // Serverless function usage
-const mailer = (req, res) => {
+const mailer = async (req, res) => {
     const { email, msg } = req.body
     try {
-        const mail = mailing(email, msg)
+        const mail = await mailing(email, msg)
         res.status(200).json({ 'message': 'OH YEAH', msg: mail.messageId })
     } catch (err) {
-        // const errors = errorHandler(err)
-        res.status(400).json({ err })
+        const errors = errorHandler(err)
+        res.status(400).json({ errors })
     }
 }
 
