@@ -6,6 +6,7 @@ import nodemailer from 'nodemailer'
 // import xssFilters from 'xss-filters'
 
 const mailer = (req, res) => {
+    const { email, msg } = req.body
     try {
         // // Our three form fields, all required
         // // console.log('email subj:', req.body.inputs.title)
@@ -49,9 +50,9 @@ const mailer = (req, res) => {
             // })    
             transporter.sendMail({
                 from: process.env.MAIL_USER,
-                to: 'oliver.carvajal@gmail.com',
+                to: email,
                 subject: 'testing mailer function',
-                text: 'dummy body text'
+                text: msg
             },
                 (error) => {
                     if (error) {
@@ -61,8 +62,8 @@ const mailer = (req, res) => {
                 }
             )
         }
-        const email = 'oliver.carvajal@gmail.com'
-        sendMail(email, '...sanitizedAttributes')
+        // const email = 'oliver.carvajal@gmail.com'
+        sendMail(email, msg)
         res.status(200).json({ 'message': 'OH YEAH' })
     } catch (err) {
         // const errors = errorHandler(err)
