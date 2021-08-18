@@ -57,7 +57,7 @@ function mail(email, msg) {
     //       console.log('Server is ready to take our messages');
     //   }
     // })    
-    return transporter.sendMail({ options },
+    transporter.sendMail({ options },
         // (error, info) => {
         //     if (error) {
         //         console.log("Sending Error:", error);
@@ -69,10 +69,10 @@ function mail(email, msg) {
 }
 
 // Serverless function usage
-export default async function handler(req, res) {
+export default function handler(req, res) {
     const { email, msg } = req.body
     try {
-        await mail(email, msg)
+        mail(email, msg)
         res.status(200).json({ message: 'OH YEAH', email, msg })
     } catch (err) {
         const errors = errorHandler(err)
