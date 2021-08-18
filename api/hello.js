@@ -1,9 +1,9 @@
 import User from './models/User'
 import dbConnect from './dbConnect'
 
-const hello = async (req, res) => {
+export default async (req, res) => {
     await dbConnect()
-    const body = req.body.email
+    const body = req.query
     const email = 'oc@gmail.com'
     try {
         const user = await User.findOne({ email })
@@ -18,4 +18,4 @@ const hello = async (req, res) => {
     }
 }
 
-export default hello
+// export default hello
