@@ -1,11 +1,17 @@
-require('dotenv').config()
+// require('dotenv').config()
 const User = require('../models/User')
 const errorHandler = require('../utils/errorHandler')
 
-module.exports.user_get = (req, res) => {
-    const user = req.cookies['user']
+module.exports.user_get = async (req, res) => {
+    const user = req.cookies.user
     // res.json({ user: user })
-    res.status(200).json({ user: user })
+    try {
+        await User.findOne({ user })
+        res.status(201).json({ user })
+    } catch (err) {
+        const errors = errorHandler(err)
+        res.status(400).json({ errors })
+    }
 }
 // module.exports.user_post = async (req, res) => {
 //     const { email, password } = req.body
