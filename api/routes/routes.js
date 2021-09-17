@@ -1,12 +1,12 @@
 // refactoring auth routes into routes.js
-const { Router } = require('express')
-const router = Router()
+// const { Router } = require('express')
+const routes = require('express').Router()
 // Utils
 const { createToken } = require('../utils/jwt')
 const errorHandler = require('../utils/errorHandler')
 const User = require('../models/User')
 // Auth Routes
-router.post('/auth/register', async (req, res) => {
+routes.post('/auth/register', async (req, res) => {
     // console.log('firing register_post from authCtrl.js')
     const { email, password } = req.body
     try {
@@ -17,7 +17,7 @@ router.post('/auth/register', async (req, res) => {
         res.status(400).json({ errors })
     }
 })
-router.post('/auth/login', async (req, res) => {
+routes.post('/auth/login', async (req, res) => {
     // console.log('triggering auth login function')
     const { email } = req.body
     try {
@@ -31,9 +31,13 @@ router.post('/auth/login', async (req, res) => {
         res.status(400).json({ errors })
     }
 })
-router.get('/auth/logout', (req, res) => {
+routes.get('/auth/logout', (req, res) => {
     // should we remove user info from the cookie?
     res.status(200).json({ status: 'OK' })
 })
+// Test route
+routes.post('/auth/test', (req, res) => {
+    res.status(200).json({ status: 'Test' })
+})
 
-module.exports = router
+module.exports = routes
