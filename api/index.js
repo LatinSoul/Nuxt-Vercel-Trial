@@ -19,7 +19,7 @@ const test = require('./test')
 app.use(cookieParser())
 app.use(express.json())
 app.use('/api', routes)
-app.post('/api', test)
+// app.post('/api', test)
 
 // app.get('/api', (req, res) => {
 //     const path = `/api/item/${v4()}`;
