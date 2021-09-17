@@ -37,7 +37,8 @@ routes.get('/auth/logout', (req, res) => {
 })
 // Test route
 routes.post('/auth/test', (req, res) => {
-    res.status(200).json({ status: 'Test' })
+    const { test } = req.body
+    res.status(200).json({ status: test })
 })
 
 module.exports = routes
