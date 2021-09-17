@@ -1,7 +1,12 @@
-// require('dotenv').config()
-// const jwt = require('jsonwebtoken')
-
-module.exports.register = async (req, res) => {
+// refactoring auth routes into routes.js
+const { Router } = require('express')
+const router = Router()
+// Utils
+const { createToken } = require('../utils/jwt')
+const errorHandler = require('../utils/errorHandler')
+const User = require('../models/User')
+// Auth Routes
+router.post('/auth/register', async (req, res) => {
     // console.log('firing register_post from authCtrl.js')
     const { email, password } = req.body
     try {
@@ -11,10 +16,8 @@ module.exports.register = async (req, res) => {
         const errors = errorHandler(err)
         res.status(400).json({ errors })
     }
-}
-// login is finding one user from the collection and checking if credentials are ok.
-// can stay here since we create a token when user is verified
-module.exports.login = async (req, res) => {
+})
+router.post('/auth/login', async (req, res) => {
     // console.log('triggering auth login function')
     const { email } = req.body
     try {
@@ -27,9 +30,10 @@ module.exports.login = async (req, res) => {
         const errors = errorHandler(err)
         res.status(400).json({ errors })
     }
-}
-// logout is just where it should be!
-module.exports.logout = (req, res) => {
+})
+router.get('/auth/logout', (req, res) => {
     // should we remove user info from the cookie?
     res.status(200).json({ status: 'OK' })
-}
+})
+
+module.exports = router
