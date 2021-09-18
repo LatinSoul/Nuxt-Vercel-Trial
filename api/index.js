@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const app = require('express')()
-const cookieParser = require('cookie-parser')
+// const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const { v4 } = require('uuid');
 
@@ -13,8 +13,14 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 // Routes
 // const routes = require('./routes/routes')
 
+// Auth requirements
+const { createToken } = require('../utils/jwt')
+const errorHandler = require('../utils/errorHandler')
+const User = require('../models/User')
+
+
 // Middleware resources
-app.use(cookieParser())
+// app.use(cookieParser())
 // app.use(express.json())
 // app.use('/api', routes)
 
@@ -25,6 +31,21 @@ app.get('/api', (req, res) => {
     res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
 });
 
+app.post('api/login', async (req, res) => {
+    // console.log('triggering auth login function')
+    const { email } = req.body
+    try {
+        const user = await User.findOne({ email })
+        // console.log('uid:', user._id)
+        const token = createToken(user._id)
+        res.cookie('user', user, { httpOnly: true })
+        res.status(200).json({ token })
+    } catch (err) {
+        const errors = errorHandler(err)
+        res.status(400).json({ errors })
+    }
+    // res.status(200).json({ status: email })
+})
 // app.get('/api/item/:slug', (req, res) => {
 //     const { slug } = req.params;
 //     res.end(`Item: ${slug}`);
