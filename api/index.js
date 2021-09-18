@@ -14,9 +14,10 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 // const routes = require('./routes/routes')
 
 // Auth requirements
-const { createToken } = require('./utils/jwt')
-const errorHandler = require('./utils/errorHandler')
-const User = require('./models/User')
+// const { createToken } = require('./utils/jwt')
+// const errorHandler = require('./utils/errorHandler')
+// const User = require('./models/User')
+const login = require('./auth/login')
 
 
 // Middleware resources
@@ -31,19 +32,7 @@ app.get('/api', (req, res) => {
     res.end(`Hello! Go to item: <a href="${path}">${path}</a>`);
 });
 
-app.post('/api/login', async (req, res) => {
-    const email = req.body.email
-    try {
-        const user = await User.findOne({ email })
-        const token = createToken(user._id)
-        res.cookie('user', user, { httpOnly: true })
-        res.status(200).json({ token })
-    } catch (err) {
-        const errors = errorHandler(err)
-        res.status(400).json({ errors })
-    }
-    res.status(200).json({ status: email })
-})
+app.post('/api/login', login)
 // app.get('/api/item/:slug', (req, res) => {
 //     const { slug } = req.params;
 //     res.end(`Item: ${slug}`);
