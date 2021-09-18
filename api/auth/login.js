@@ -4,7 +4,7 @@
 
 // Auth required files
 const { createToken } = require('../utils/jwt')
-const errorHandler = require('../utils/errorHandler')
+// const errorHandler = require('../utils/errorHandler')
 const User = require('../models/User')
 
 module.exports = async (req, res) => {
@@ -17,8 +17,8 @@ module.exports = async (req, res) => {
         res.cookie('user', user, { httpOnly: true })
         res.status(200).json({ token })
     } catch (err) {
-        const errors = errorHandler(err)
-        res.status(400).json({ errors })
+        // const errors = errorHandler(err)
+        res.status(400).json({ err })
     }
     // res.status(200).json({ status: email })
 }
