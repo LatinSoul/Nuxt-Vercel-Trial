@@ -14,9 +14,9 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
 // const routes = require('./routes/routes')
 
 // Auth requirements
-const { createToken } = require('../utils/jwt')
-const errorHandler = require('../utils/errorHandler')
-const User = require('../models/User')
+const { createToken } = require('./utils/jwt')
+const errorHandler = require('./utils/errorHandler')
+const User = require('./models/User')
 
 
 // Middleware resources
