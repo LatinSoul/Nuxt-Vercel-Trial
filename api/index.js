@@ -32,16 +32,16 @@ app.get('/api', (req, res) => {
 });
 
 app.post('/api/login', async (req, res) => {
-    const { email } = req.body
-    // try {
-    //     const user = await User.findOne({ email })
-    //     const token = createToken(user._id)
-    //     res.cookie('user', user, { httpOnly: true })
-    //     res.status(200).json({ token })
-    // } catch (err) {
-    //     const errors = errorHandler(err)
-    //     res.status(400).json({ errors })
-    // }
+    const email = req.body.email
+    try {
+        const user = await User.findOne({ email })
+        const token = createToken(user._id)
+        res.cookie('user', user, { httpOnly: true })
+        res.status(200).json({ token })
+    } catch (err) {
+        const errors = errorHandler(err)
+        res.status(400).json({ errors })
+    }
     res.status(200).json({ status: email })
 })
 // app.get('/api/item/:slug', (req, res) => {
