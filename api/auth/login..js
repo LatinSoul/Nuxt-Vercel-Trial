@@ -21,5 +21,5 @@ module.exports = (req, res) => {
     //     const errors = errorHandler(err)
     //     res.status(400).json({ errors })
     // }
-    res.send(email)
+    res.status(200).json({ status: email })
 }
