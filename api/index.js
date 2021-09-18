@@ -12,14 +12,12 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCr
     .catch((err) => console.log('db conn err:', err))
 
 // Routes
-const routes = require('./routes/routes')
-const test = require('./test')
+// const routes = require('./routes/routes')
 
 // Middleware resources
 app.use(cookieParser())
 app.use(express.json())
-app.use('/api', routes)
-// app.post('/api', test)
+// app.use('/api', routes)
 
 // app.get('/api', (req, res) => {
 //     const path = `/api/item/${v4()}`;
