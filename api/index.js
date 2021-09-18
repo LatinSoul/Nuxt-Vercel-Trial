@@ -18,7 +18,7 @@ const test = require('./test')
 // Middleware resources
 app.use(cookieParser())
 app.use(express.json())
-// app.use('/api', routes)
+app.use('/api', routes)
 // app.post('/api', test)
 
 // app.get('/api', (req, res) => {
