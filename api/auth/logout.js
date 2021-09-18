@@ -1,3 +1,4 @@
 module.exports = (req, res) => {
-    res.send(`This response would send information about teams. equivalent to app.get('/teams/data')`);
-};
+    // should we remove user info from the cookie?
+    res.status(200).json({ status: 'OK' })
+}
