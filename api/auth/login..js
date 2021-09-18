@@ -8,7 +8,7 @@
 // const errorHandler = require('../utils/errorHandler')
 // const User = require('../models/User')
 
-module.exports = async (req, res) => {
+module.exports = (req, res) => {
     // console.log('triggering auth login function')
     const { email } = req.body
     // try {
