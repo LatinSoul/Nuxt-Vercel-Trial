@@ -33,10 +33,11 @@ module.exports = async (req, res) => {
     // const { email } = req.body
     try {
         const user = await User.findOne({ email: 'oc@gmail.com' })
+        res.status(200).json({ user })
         // console.log('uid:', user._id)
-        const token = createToken(user._id)
-        res.cookie('user', user, { httpOnly: true })
-        res.status(200).json({ token })
+        // const token = createToken(user._id)
+        // res.cookie('user', user, { httpOnly: true })
+        // res.status(200).json({ token })
     } catch (err) {
         const errors = errorHandler(err)
         res.status(400).json({ errors })
