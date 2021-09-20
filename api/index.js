@@ -23,7 +23,7 @@ const routes = require('./routes/authRoutes')
 // Middleware resources
 // app.use(cookieParser())
 app.use(express.json())
-app.use('/api/auth', routes)
+// app.use('/api/auth', routes)
 
 app.get('/api', (req, res) => {
     const path = `/api/item/${v4()}`
@@ -39,7 +39,7 @@ app.get('/api/item/:slug', (req, res) => {
 
 app.get('/api/test', (req, res) => {
     const { test } = req.body
-    res.json({ test })
+    res.json({ item : test })
 })
 
 module.exports = app;
