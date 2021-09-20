@@ -6,7 +6,7 @@ const { createToken } = require('../utils/jwt')
 const errorHandler = require('../utils/errorHandler')
 const User = require('../models/User')
 // Auth Routes
-routes.post('/auth/register', async (req, res) => {
+routes.post('/register', async (req, res) => {
     // console.log('firing register_post from authCtrl.js')
     const { email, password } = req.body
     try {
@@ -17,7 +17,7 @@ routes.post('/auth/register', async (req, res) => {
         res.status(400).json({ errors })
     }
 })
-routes.post('/auth/login', async (req, res) => {
+routes.post('/login', async (req, res) => {
     // console.log('triggering auth login function')
     const { email } = req.body
     try {
@@ -31,12 +31,12 @@ routes.post('/auth/login', async (req, res) => {
         res.status(400).json({ errors })
     }
 })
-routes.get('/auth/logout', (req, res) => {
+routes.get('/logout', (req, res) => {
     // should we remove user info from the cookie?
     res.status(200).json({ status: 'OK' })
 })
 // Test route
-routes.post('/auth/test', (req, res) => {
+routes.post('/test', (req, res) => {
     // const { test } = req.body
     res.status(200).json({ status: req.body })
 })

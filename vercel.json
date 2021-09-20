@@ -1,8 +1,40 @@
 {
-    "rewrites": [
+    "version": 2,
+    "routes": [
         {
-            "source": "/api/(.*)",
-            "destination": "/api"
+            "src": "/api/hello",
+            "dest": "/api/hello.js"
+        },
+        {
+            "src": "/api/auth/register",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/api/auth/login",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/api/auth/logout",
+            "dest": "/api/index.js"
+        },
+        {
+            "src": "/api/test",
+            "dest": "/api/index.js"
+        }
+    ],
+    "builds": [
+        {
+            "src": "api/**/*.js",
+            "use": "@vercel/node"
+        },
+        {
+            "src": "nuxt.config.js",
+            "use": "@nuxtjs/vercel-builder",
+            "config": {
+                "serverFiles": [
+                    "api/**"
+                ]
+            }
         }
     ]
 }

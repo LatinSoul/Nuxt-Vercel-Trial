@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-
 const MONGODB_URI = process.env.MONGODB_URI
 
 if (!MONGODB_URI) {
@@ -7,7 +6,6 @@ if (!MONGODB_URI) {
         'Please define the MONGODB_URI environment variable inside .env.local'
     )
 }
-
 /**
  * Global is used here to maintain a cached connection across hot reloads
  * in development. This prevents connections growing exponentially
@@ -23,7 +21,6 @@ export default async function dbConnect() {
     if (cached.conn) {
         return cached.conn
     }
-
     if (!cached.promise) {
         const opts = {
             useNewUrlParser: true,
@@ -33,7 +30,6 @@ export default async function dbConnect() {
             useFindAndModify: false,
             useCreateIndex: true,
         }
-
         cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
             return mongoose
         })
