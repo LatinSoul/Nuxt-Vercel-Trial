@@ -8,7 +8,7 @@
         {
             "src": "/api/login",
             "dest": "/api/index.js"
-        },
+        }
     ],
     "builds": [
         {
