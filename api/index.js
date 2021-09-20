@@ -51,6 +51,10 @@ app.post('/api/login', async (req, res) => {
 //     const { slug } = req.params;
 //     res.end(`Item: ${slug}`);
 // });
+app.get('/api/test', (req, res) => {
+    const { test } = req.body;
+    res.end(`item: ${test}`);
+});
 
 module.exports = app;
 
