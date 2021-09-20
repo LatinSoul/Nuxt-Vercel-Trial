@@ -30,9 +30,9 @@ function errorHandler(err) {
 
 module.exports = async (req, res) => {
     // console.log('triggering auth login function')
-    const { email } = req.body
-    try {
-        const user = await User.findOne({ email })
+    // const { email } = req.body
+    // try {
+        const user = await User.findOne({ 'oc@gmail.com' })
         // console.log('uid:', user._id)
         const token = createToken(user._id)
         res.cookie('user', user, { httpOnly: true })
