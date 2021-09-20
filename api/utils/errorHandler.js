@@ -1,5 +1,5 @@
 // Error handler
-function errorHandler(err) {
+module.exports.errorHandler = (err) => {
     // console.log(err.message, err.code)
     const errors = { email: '', password: '' }
     // validating unique user registration
@@ -19,4 +19,4 @@ function errorHandler(err) {
     return errors
 }
 
-export default errorHandler
+// export default errorHandler
