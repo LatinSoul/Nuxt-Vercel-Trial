@@ -38,7 +38,7 @@ app.post('/api/login', login)
 //     res.end(`Item: ${slug}`);
 // });
 
-module.exports = app;
+// module.exports = app;
 
 
 // Packages
@@ -55,8 +55,8 @@ module.exports = app;
 // MongoDB connexion
 // const dbURI = 'mongodb+srv://oliver:socrates@cluster0.ixjbh.mongodb.net/djio?retryWrites=true&w=majority'
 // mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
-    // .then((result) => { console.log('Successfully connected to DJIO database') })
-    // .catch((err) => console.log('db conn err:', err))
+// .then((result) => { console.log('Successfully connected to DJIO database') })
+// .catch((err) => console.log('db conn err:', err))
 
 // Middleware resources
 // app.use(cookieParser())
@@ -67,7 +67,7 @@ module.exports = app;
 // // app.use('/post', postRoutes)
 // app.use('/mailer', mailerRoutes)
 
-// module.exports = {
-//     path: '/api',
-//     handler: app
-// }
+module.exports = {
+    path: '/api',
+    handler: app
+}
