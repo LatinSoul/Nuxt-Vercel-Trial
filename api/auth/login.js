@@ -1,9 +1,4 @@
-// module.exports = (req, res) => {
-//     res.send(`This response would send information about teams. equivalent to app.get('/teams/data')`);
-// };
-
-// Auth required files
-// const { createToken } = require('../utils/jwt')
+const { createToken } = require('../utils/jwt')
 const errorHandler = require('../utils/errorHandler')
 const User = require('../models/User')
 
@@ -27,20 +22,17 @@ const User = require('../models/User')
 //     return errors
 // }
 
-
 module.exports = async (req, res) => {
-    // console.log('triggering auth login function')
-    // const { email } = req.body
+    const { email } = req.body
     try {
-        const user = await User.findOne({ email: 'oc@gmail.com' })
-        res.status(200).json({ user })
-        // console.log('uid:', user._id)
-        // const token = createToken(user._id)
-        // res.cookie('user', user, { httpOnly: true })
-        // res.status(200).json({ token })
+        const user = await User.findOne({ email })
+        const token = createToken(user._id)
+        res.cookie('user', user, { httpOnly: true })
+        res.status(200).json({ token })
     } catch (err) {
         const errors = errorHandler(err)
         res.status(400).json({ errors })
     }
+    // res.status(200).json({ user })
     // res.status(200).json({ status: email })
 }

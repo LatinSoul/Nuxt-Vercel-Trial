@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
-const app = require('express')()
+const express = require('express')
+const app = express()
 // const cookieParser = require('cookie-parser')
 const mongoose = require('mongoose')
 const { v4 } = require('uuid');
@@ -22,7 +23,7 @@ const login = require('./auth/login')
 
 // Middleware resources
 // app.use(cookieParser())
-// app.use(express.json())
+app.use(express.json())
 // app.use('/api', routes)
 
 app.get('/api', (req, res) => {
