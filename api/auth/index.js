@@ -2,8 +2,15 @@
 // const errorHandler = require('../utils/errorHandler')
 // const User = require('../models/User')
 import jwt from 'jsonwebtoken'
-// User
 const mongoose = require('mongoose')
+
+// MongoDB connexion
+const dbURI = 'mongodb+srv://oliver:socrates@cluster0.ixjbh.mongodb.net/djio?retryWrites=true&w=majority'
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false })
+    .then((result) => { console.log('Successfully connected to DJIO database') })
+    .catch((err) => console.log('db conn err:', err))
+
+// User
 const { isEmail } = require('validator')
 const bcrypt = require('bcrypt')
 
