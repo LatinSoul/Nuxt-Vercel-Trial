@@ -2,9 +2,13 @@
     "version": 2,
     "routes": [
         {
-            "src": "/api/index",
+            "src": "/api/hello",
+            "dest": "/api/hello.js"
+        },
+        {
+            "src": "/api/login",
             "dest": "/api/index.js"
-        }
+        },
     ],
     "builds": [
         {
