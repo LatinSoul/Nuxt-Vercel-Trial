@@ -1,5 +1,5 @@
 // Error handler
-const errorHandler = (err) => {
+function errorHandler(err) {
     // console.log(err.message, err.code)
     const errors = { email: '', password: '' }
     // validating unique user registration
