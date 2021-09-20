@@ -29,18 +29,18 @@ function errorHandler(err) {
 }
 
 app.post('/login', async (req, res) => {
-    const { email } = req.body
-    try {
-        const user = await User.findOne({ email })
-        const token = createToken(user._id)
-        res.cookie('user', user, { httpOnly: true })
-        res.status(200).send({ token })
-    } catch (err) {
-        const errors = errorHandler(err)
-        res.status(400).send({ errors })
-    }
-    // res.status(200).json({ user })
-    // res.status(200).json({ status: email })
+    const { email } = await req.body
+    // try {
+    //     const user = await User.findOne({ email })
+    //     const token = createToken(user._id)
+    //     res.cookie('user', user, { httpOnly: true })
+    //     res.status(200).send({ token })
+    // } catch (err) {
+    //     const errors = errorHandler(err)
+    //     res.status(400).send({ errors })
+    // }
+    // // res.status(200).json({ user })
+    res.status(200).json({ status: email })
 })
 
 module.exports = app;

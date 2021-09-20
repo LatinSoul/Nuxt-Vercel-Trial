@@ -2,6 +2,8 @@ const { createToken } = require('../utils/jwt')
 const errorHandler = require('../utils/errorHandler')
 const User = require('../models/User')
 
+
+
 // function errorHandler(err) {
 //     // console.log(err.message, err.code)
 //     const errors = { email: '', password: '' }
