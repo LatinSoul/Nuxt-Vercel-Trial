@@ -12,7 +12,7 @@ app.post('/api/hello', function (req, res) {
     // console.log(info)
     res
         .status(200)
-        .json({ info })
+        .send({ info })
         .end()
 })
 
