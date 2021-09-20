@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+
 const { createToken } = require('../utils/jwt')
 // const errorHandler = require('../utils/errorHandler')
 const User = require('../models/User')
