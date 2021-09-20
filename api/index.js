@@ -39,7 +39,7 @@ app.get('/api/item/:slug', (req, res) => {
 
 app.get('/api/test', (req, res) => {
     const { test } = req.body
-    res.json({ item : test })
+    res.end(`${test} from route: /api/test`)
 })
 
 module.exports = app;
