@@ -38,7 +38,7 @@ app.post('/api/login', login)
 //     res.end(`Item: ${slug}`);
 // });
 
-// module.exports = app;
+module.exports = app;
 
 
 // Packages
@@ -67,7 +67,7 @@ app.post('/api/login', login)
 // // app.use('/post', postRoutes)
 // app.use('/mailer', mailerRoutes)
 
-module.exports = {
-    path: '/api',
-    handler: app
-}
+// module.exports = {
+//     path: '/api',
+//     handler: app
+// }

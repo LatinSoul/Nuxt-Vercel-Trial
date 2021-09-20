@@ -1,5 +1,11 @@
 {
     "version": 2,
+    "routes": [
+        {
+            "src": "/api/index",
+            "dest": "/api/index.js"
+        }
+    ],
     "builds": [
         {
             "src": "nuxt.config.js",
