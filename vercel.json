@@ -11,7 +11,7 @@
         },
         {
             "src": "/api/auth/login",
-            "dest": "/api/index.js"
+            "dest": "/api/auth/login.js"
         },
         {
             "src": "/api/auth/logout",
