@@ -1,3 +1,6 @@
+const express = require('express')
+const app = express()
+
 const { createToken } = require('../utils/jwt')
 // const errorHandler = require('../utils/errorHandler')
 const User = require('../models/User')
@@ -22,7 +25,7 @@ function errorHandler(err) {
     return errors
 }
 
-module.exports = async (req, res) => {
+app.post('/login', async (req, res) => {
     const { email } = req.body
     try {
         const user = await User.findOne({ email })
@@ -35,4 +38,6 @@ module.exports = async (req, res) => {
     }
     // res.status(200).json({ user })
     // res.status(200).json({ status: email })
-}
+})
+
+module.exports = app;
