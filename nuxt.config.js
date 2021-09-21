@@ -49,7 +49,7 @@ export default {
   build: {
   },
   serverMiddleware: [
-    { path: '/api', handler: '~/api/index.js' },
+    // { path: '/api', handler: '~/api/index.js' },
     // { path: '/contact', handler: '~/api/contact.js' },
     // '~/api/contact',
     // '~/api/auth',

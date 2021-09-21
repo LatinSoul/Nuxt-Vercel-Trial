@@ -98,7 +98,7 @@ userSchema.pre('save', async function (next) {
     next()
 })
 
-const User = mongoose.model('user', userSchema)
+const User = mongoose.model('User', userSchema)
 
 // jwt
 const maxAge = 3 * 24 * 60 * 60
@@ -140,6 +140,7 @@ function errorHandler(err) {
 }
 
 module.exports = async (req, res) => {
+    
     const { email } = await req.body
     try {
         const user = await User.findOne({ email })

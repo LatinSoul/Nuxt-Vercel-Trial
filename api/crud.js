@@ -1,8 +1,13 @@
+import { dbConnect } from '../lib/db'
+
 let people = [{ name: 'Patrick' }, { name: 'Sandy' }, { name: 'Bob' }]
 
-module.exports = function (req, res) {
+module.exports = async (req, res) => {
     if (req.method === 'GET') {
-        res.status(200).json(people);
+        const db = await dbConnect()
+        const collection = db.collection('users')
+        const users = await collection.find({}).toArray()
+        res.status(200).json({ users });
     } else if (req.method === 'POST') {
         people.push(req.body)
         res.status(200).json(people)
