@@ -10,15 +10,15 @@
         "generate": "nuxt generate"
     },
     "dependencies": {
-        "nuxt": "^2.15.8",
-        "core-js": "^3.18.0"
+        "core-js": "^3.18.0",
+        "nuxt": "^2.13.3"
     },
     "devDependencies": {
-        "@nuxtjs/axios": "^5.13.6",
-        "@nuxt/core": "^2.15.8",
         "@babel/core": "^7.15.5",
         "@babel/eslint-parser": "^7.14.7",
         "@babel/preset-env": "^7.15.6",
+        "@nuxt/core": "^2.15.8",
+        "@nuxtjs/axios": "^5.13.6",
         "@nuxtjs/eslint-config": "^6.0.1",
         "@nuxtjs/eslint-module": "^3.0.2",
         "babel-loader": "^8.2.2",
