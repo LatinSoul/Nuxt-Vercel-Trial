@@ -7,15 +7,13 @@
         "dev": "nuxt",
         "build": "nuxt build",
         "start": "nuxt start",
-        "generate": "nuxt generate",
-        "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
-        "lint": "npm run lint:js"
+        "generate": "nuxt generate"
     },
     "dependencies": {
-        "nuxt": "^2.15.8"
+        "nuxt": "^2.15.8",
+        "core-js": "^3.18.0npm"
     },
     "devDependencies": {
-        "core-js": "^3.15.1",
         "@nuxtjs/axios": "^5.13.6",
         "@nuxt/core": "^2.15.8",
         "@babel/core": "^7.15.5",
