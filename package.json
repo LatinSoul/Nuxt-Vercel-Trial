@@ -10,20 +10,16 @@
         "generate": "nuxt generate"
     },
     "dependencies": {
-        "core-js": "^3.18.0",
-        "nuxt": "^2.13.3"
+        "@nuxtjs/axios": "^5.13.6",
+        "core-js": "^3.15.1",
+        "nuxt": "^2.15.7"
     },
     "devDependencies": {
-        "@babel/core": "^7.15.5",
         "@babel/eslint-parser": "^7.14.7",
-        "@babel/preset-env": "^7.12.17",
-        "@nuxt/core": "^2.15.8",
-        "@nuxtjs/axios": "^5.13.6",
         "@nuxtjs/eslint-config": "^6.0.1",
         "@nuxtjs/eslint-module": "^3.0.2",
-        "babel-loader": "^8.2.2",
         "bcrypt": "^5.0.1",
-        "cookie-parser": "^1.4.5",
+        "dotenv": "^10.0.0",
         "eslint": "^7.29.0",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-nuxt": "^2.0.0",
@@ -32,11 +28,7 @@
         "jsonwebtoken": "^8.5.1",
         "mongodb": "^3.6.11",
         "mongoose": "^5.13.3",
-        "nodemailer": "^6.6.3",
         "nodemon": "^2.0.12",
-        "prettier": "^2.3.2",
-        "uuid": "^8.3.2",
-        "validator": "^13.6.0",
-        "xss-filters": "^1.2.7"
+        "prettier": "^2.3.2"
     }
 }
