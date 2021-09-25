@@ -51,8 +51,5 @@ export default {
   },
   serverMiddleware: [
   { path: '/api', handler: '~/api/crud.js' },
-  // { path: '/contact', handler: '~/api/contact.js' },
-  // '~/api/contact',
-  // '~/api/crud.js',
   ],
 }
