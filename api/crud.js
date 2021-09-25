@@ -1,5 +1,5 @@
 // require('dotenv').config()
-import { dbConnect } from '../lib/db'
+import { dbConnect } from './db'
 
 // let people = [{ name: 'Patrick' }, { name: 'Sandy' }, { name: 'Bob' }]
 
