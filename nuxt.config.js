@@ -50,9 +50,9 @@ export default {
   build: {
   },
   serverMiddleware: [
-  // { path: '/api', handler: '~/api/crud.js' },
+  { path: '/api', handler: '~/api/crud.js' },
   // { path: '/contact', handler: '~/api/contact.js' },
   // '~/api/contact',
-  '~/api/crud.js',
+  // '~/api/crud.js',
   ],
 }
