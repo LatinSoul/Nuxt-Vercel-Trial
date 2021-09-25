@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
 // require('dotenv').config()
-const MongoClient = require('mongodb').MongoClient
+import MongoClient from 'mongodb'
+// const {MongoClient} = require('mongodb')
 
 let cachedDd = null
 
