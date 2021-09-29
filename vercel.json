@@ -6,18 +6,6 @@
             "dest": "/api/crud.js"
         },
         {
-            "src": "/api/auth/register",
-            "dest": "/api/index.js"
-        },
-        {
-            "src": "/api/auth/login",
-            "dest": "/api/auth/login.js"
-        },
-        {
-            "src": "/api/auth/logout",
-            "dest": "/api/index.js"
-        },
-        {
             "src": "/api/test",
             "dest": "/api/index.js"
         }
